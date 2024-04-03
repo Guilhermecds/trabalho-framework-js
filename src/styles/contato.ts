@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const BackgroundContainer = styled.div`
-  background-image: url('caminho/para/sua/imagem.jpg'); /* Substitua pelo caminho real da sua imagem */
-  background-size: cover; /* Garante que a imagem cubra toda a tela */
-  background-position: center; /* Centraliza a imagem na tela */
+  background-image: url('caminho/para/sua/imagem.jpg');
+  background-size: cover; 
+  background-position: center;
   justify-content: center;
   align-items: center;
 `;
@@ -20,6 +20,7 @@ export const FormContainer = styled.div`
 
 export const FormGroup = styled.div`
   margin-bottom: 20px;
+  margin-right: 20px;
 `;
 
 export const Label = styled.label`
@@ -55,4 +56,5 @@ export const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
 `;

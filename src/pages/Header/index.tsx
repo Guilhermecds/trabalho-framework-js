@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { HeaderContainer, Logo, NavLinkInput, NavLinks, Navbar } from "../../styles/header"
+import { HeaderContainer, Logo, NavLinkInput, NavLinks, Navbar, StyledNavLink } from "../../styles/header"
 
 
 export const Header = () => {
@@ -8,42 +8,30 @@ export const Header = () => {
           <Navbar>
             <Logo>PROJETINHO CHINES</Logo>
             <NavLinks>
-                <NavLinkInput>
-                    <NavLink 
+                <StyledNavLink
                         to={"/"} 
-                        style={({ isActive, isPending, isTransitioning }) => {
+                        style={({ isActive}) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
-                                color: isPending ? "red" : "black",
-                                viewTransitionName: isTransitioning ? "slide" : "",
                             }}}>
                         Home
-                    </NavLink>
-                </NavLinkInput>
-                <NavLinkInput>
-                    <NavLink 
+                </StyledNavLink>
+                <StyledNavLink
                         to={"/carrinho"}
-                        style={({ isActive, isPending, isTransitioning }) => {
+                        style={({ isActive }) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
-                                color: isPending ? "red" : "black",
-                                viewTransitionName: isTransitioning ? "slide" : "",
                             }}}>
                         Carrinho
-                    </NavLink>
-                </NavLinkInput>
-                <NavLinkInput>
-                    <NavLink 
+                </StyledNavLink>
+                <StyledNavLink
                         to={"/contato"}
-                        style={({ isActive, isPending, isTransitioning }) => {
+                        style={({ isActive }) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
-                                color: isPending ? "red" : "black",
-                                viewTransitionName: isTransitioning ? "slide" : "",
                             }}}>
                         Contato
-                    </NavLink>
-                </NavLinkInput>
+                </StyledNavLink>
             </NavLinks>
           </Navbar>
         </HeaderContainer>

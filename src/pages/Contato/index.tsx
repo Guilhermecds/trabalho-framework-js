@@ -15,12 +15,37 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export const Contato = () => {
-      const navigate = useNavigate(); // Use useNavigate ao invés de useHistory
+      const navigate = useNavigate();
     
-      const handleSubmit = (e: any) => {
+      const handleSubmit = async (e: any) => {
         e.preventDefault();
-        toast("Enviado com Sucesso!")
-        navigate('/');
+    
+        // Coletar dados do formulário
+        const formData = new FormData(e.target);
+        const formDataObject: Record<string, string> = {};
+        formData.forEach((value, key) => {
+          formDataObject[key] = value.toString();
+        });
+    
+        try {
+          const response = await fetch('http://localhost:8000/contatos', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDataObject),
+          });
+    
+          if (response.ok) {
+            toast.success('Enviado com sucesso!');
+            navigate('/contato');
+          } else {
+            toast.error('Erro ao enviar dados.');
+          }
+        } catch (error) {
+          console.error('Erro ao enviar dados:', error);
+          toast.error('Erro ao enviar dados.');
+        }
       };
     
 
@@ -43,13 +68,14 @@ export const Contato = () => {
                             <Label>Email:</Label>
                             <Input type="email" name="email" required />
                         </FormGroup>
+                        
                 
                         <FormGroup>
                             <Label>Cidade:</Label>
                             <Select name="cidade" required>
-                            <option value="cidade1">Cidade 1</option>
-                            <option value="cidade2">Cidade 2</option>
-                            <option value="cidade3">Cidade 3</option>
+                            <option value="Douradina">Douradina</option>
+                            <option value="Sao Paulo">Sao Paulo</option>
+                            <option value="Umuarama">Umuarama</option>
                             </Select>
                         </FormGroup>
                 
